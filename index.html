@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Esquadrias de Alumínio JB</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<script>
+function toggleSobre() {
+    const texto = document.getElementById("sobreTexto");
+    const seta = document.getElementById("setaSobre");
+
+    if (!texto || !seta) return;
+
+    texto.classList.toggle("aberto");
+    seta.style.transform = texto.classList.contains("aberto")
+        ? "rotate(180deg)"
+        : "rotate(0deg)";
+}
+
+function toggleServico(titulo) {
+    const detalhe = titulo.nextElementSibling;
+    const seta = titulo.querySelector("span");
+
+    if (!detalhe || !seta) return;
+
+    detalhe.classList.toggle("aberto");
+    seta.style.transform = detalhe.classList.contains("aberto")
+        ? "rotate(180deg)"
+        : "rotate(0deg)";
+}
+</script>
+
+
+<script>
+function toggleContato() {
+    document.getElementById("contatoDropdown").classList.toggle("ativo");
+}
+</script>
+
+
+<script>
+function toggleOrcamento() {
+    document.getElementById("orcamento").classList.toggle("ativo");
+}
+
+document.getElementById("formOrcamento").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const nome = document.getElementById("nome").value;
+    const tel = document.getElementById("telefone").value;
+    const email = document.getElementById("email").value;
+    const servico = document.getElementById("servico").value;
+    const msg = document.getElementById("mensagem").value;
+
+    const texto =
+        `Olá, meu nome é ${nome}.\n` +
+        `Telefone: ${tel}\n` +
+        `Email: ${email}\n` +
+        `Serviço: ${servico}\n` +
+        `Mensagem: ${msg}`;
+
+    const url = `https://wa.me/5519994112151?text=${encodeURIComponent(texto)}`;
+    window.open(url, "_blank");
+});
+</script>
+
+<script>
+function toggleContatoMenu() {
+    const dropdown = document.getElementById("contatoDropdown");
+    dropdown.classList.toggle("ativo");
+}
+</script>
+
+
+<body>
+
+<nav class="menu animate delay-1">
+    <div class="menu-container">
+
+        <div class="menu-logo">
+            <img src="images/logo.png" alt="Esquadrias de Alumínio JB">
+        </div>
+
+        <ul class="menu-links">
+            <li>
+                <a href="#inicio">Início</a>
+            </li>
+
+            <li>
+                <a href="#servicos">Serviços</a>
+            </li>
+
+            <li class="menu-contato">
+                <a href="javascript:void(0)" onclick="toggleContato()">
+                    Contato ▾
+                </a>
+
+                <div class="contato-dropdown" id="contatoDropdown">
+                    <p>📞 <strong>(19) 99411-2151</strong><br><span>Comercial</span></p>
+                    <p>✉️ contato@esquadriasjb.com.br<br><span>Administrativo</span></p>
+                    <p>✉️ financeiro@esquadriasjb.com.br<br><span>Financeiro</span></p>
+                </div>
+            </li>
+        </ul>
+
+        <a href="https://wa.me/5519994112151"
+           target="_blank"
+           class="btn-whatsapp menu-btn">
+            WhatsApp
+        </a>
+
+    </div>
+</nav>
+
+
+<header class="hero animate delay-1" id="inicio">
+    <p class="slogan animate delay-3">
+        Esquadrias JB, há mais de 10 anos trazendo estrutura para o seu espaço.
+    </p>
+</header>
+
+<div class="site-bg">
+
+
+<!-- =========================
+     QUEM SOMOS
+========================= -->
+<section class="animate delay-4" id="sobre">
+    <h2 class="quem-somos-titulo" onclick="toggleSobre()">
+        Quem somos <span id="setaSobre">▾</span>
+    </h2>
+
+    <div class="sobre-texto" id="sobreTexto">
+
+        <h3>Nossa experiência</h3>
+        <p>
+            Contamos com equipe técnica qualificada e experiente na fabricação, venda
+            e instalação de esquadrias de alumínio, atuando há mais de 10 anos no mercado.
+            Trabalhamos com processos padronizados, atenção aos detalhes e uso de materiais
+            de qualidade.
+        </p>
+
+        <p>
+            Cada projeto é tratado de forma individual, respeitando as necessidades do
+            cliente e as características de cada ambiente.
+        </p>
+
+        <h3>Atuação residencial e comercial</h3>
+        <p>
+            Atendemos desde pequenas demandas residenciais até projetos comerciais
+            e industriais.
+        </p>
+
+        <ul>
+            <li>Residências e condomínios</li>
+            <li>Comércios e lojas</li>
+            <li>Escritórios</li>
+            <li>Galpões e áreas industriais</li>
+        </ul>
+
+        <div class="sobre-imagens">
+            <img src="images/quemsomos1.jpg" alt="Instalação de esquadrias">
+            <img src="images/quemsomos2.jpg" alt="Ajuste técnico de esquadrias">
+        </div>
+
+    </div>
+</section>
+
+<!-- =========================
+     SERVIÇOS
+========================= -->
+<section class="animate delay-4" id="servicos">
+    <h2>Serviços</h2>
+
+    <div class="servicos">
+
+        <div class="servico">
+            <h3 class="servico-titulo" onclick="toggleServico(this)">
+                Esquadrias sob medida <span>▾</span>
+            </h3>
+            <div class="servico-detalhe">
+                <p>Fabricação de esquadrias sob medida, com precisão e compatibilidade com o projeto.</p>
+                <img src="images/fabrica1.jpg" alt="Esquadrias sob medida">
+            </div>
+        </div>
+
+        <div class="servico">
+            <h3 class="servico-titulo" onclick="toggleServico(this)">
+                Venda de portas, janelas e portões <span>▾</span>
+            </h3>
+            <div class="servico-detalhe">
+                <p>Fornecimento de portas, janelas e portões em alumínio.</p>
+                <img src="images/vendas1.jpg" alt="Portas e janelas de alumínio">
+            </div>
+        </div>
+
+        <div class="servico">
+            <h3 class="servico-titulo" onclick="toggleServico(this)">
+                Instalação profissional <span>▾</span>
+            </h3>
+            <div class="servico-detalhe">
+                <p>Instalação técnica com foco em segurança e acabamento.</p>
+                <img src="images/instala1.jpg" alt="Instalação de esquadrias">
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section id="orcamento" class="form-section">
+    <h2>Solicite um orçamento</h2>
+
+    <form id="formOrcamento">
+        <div class="form-row">
+            <input type="text" id="nome" placeholder="Nome completo" required>
+            <input type="tel" id="telefone" placeholder="Telefone / WhatsApp" required>
+        </div>
+
+        <input type="email" id="email" placeholder="Email">
+
+        <select id="servico">
+            <option value="Esquadrias sob medida">Esquadrias sob medida</option>
+            <option value="Portas e janelas">Portas e janelas</option>
+            <option value="Portões">Portões</option>
+            <option value="Instalação profissional">Instalação profissional</option>
+        </select>
+
+        <textarea id="mensagem" placeholder="Descreva sua necessidade"></textarea>
+
+        <button type="submit">Enviar</button>
+
+        <p class="form-info">
+            🔒 Seus dados estão seguros. Atendimento rápido e sem compromisso.
+        </p>
+    </form>
+</section>
+
+<a href="https://wa.me/5519994112151"
+   class="whatsapp-float"
+   target="_blank"
+   aria-label="WhatsApp">
+    <span class="whatsapp-notify"></span>
+    <img src="images/icons8-whatsapp-64.png" alt="WhatsApp">
+</a>
+
+
+</div>
+
+
+<!-- =========================
+     RODAPÉ
+========================= -->
+
+<footer class="footer animate delay-4" id="contato">
+
+
+    <div class="footer-container">
+
+<div class="footer-col footer-logo">
+
+    <div class="footer-social">
+        <a href="#" aria-label="Facebook">
+            <img src="images/icons8-facebook-50.png" alt="Facebook">
+        </a>
+        <a href="#" aria-label="Instagram">
+            <img src="images/icons8-instagram-logo-50.png" alt="Instagram">
+        </a>
+        <a href="#" aria-label="LinkedIn">
+            <img src="images/icons8-linkedin-logo-50.png" alt="LinkedIn">
+        </a>
+    </div>
+
+</div>
+
+
+       <div class="footer-col">
+    <h4>Atendimento</h4>
+    <ul>
+        <li>
+            <a href="javascript:void(0)" onclick="toggleOrcamento()">
+                Solicite um orçamento
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        <div class="footer-col">
+            <h4>Contato</h4>
+            <ul>
+                <li>📍 Campinas – SP</li>
+                <li>📞 (19) 99411-2151</li>
+                <li>✉️ contato@esquadriasjb.com.br</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 Esquadrias de Alumínio JB. Todos os direitos reservados.
+    </div>
+
+</footer>
+
